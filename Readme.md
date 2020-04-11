@@ -6,9 +6,8 @@ features:
 - Proper display all the countries (right size, center...).
 - Highlight the country where the mouse is pointing to (mouse hover).
 
-![Europe chart plus mouse hover](./content/chart.gif)
+![Europe chart plus mouse hover](./content/advanced.gif)
 
-Codesandbox: https://codesandbox.io/s/headless-river-s7yj3
 
 # Steps
 
