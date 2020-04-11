@@ -29774,7 +29774,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 935,
-          "NAME_1": "Andalucía",
+          "NAME_1": "Andalucia",
           "VARNAME_1": "Andalousie|Andaluc¡a|Andalusien|Andaluzia",
           "HASC_1": "ES.AN",
           "TYPE_1": "Comunidad Autónoma",
@@ -29787,7 +29787,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 936,
-          "NAME_1": "Aragón",
+          "NAME_1": "Aragon",
           "VARNAME_1": "Aragão|Aragó|Aragón|Aragona|Aragonien",
           "HASC_1": "ES.AR",
           "TYPE_1": "Comunidad Autónoma",
@@ -29813,7 +29813,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 938,
-          "NAME_1": "Castilla y León",
+          "NAME_1": "Castilla y Leon",
           "VARNAME_1": "Castile and Leon|Castela e Leão|Castella i Lleó|Castile-Leon|Castilha-Leão|Castilla y León|Castille et Léon|Kastilien-León",
           "HASC_1": "ES.CL",
           "TYPE_1": "Comunidad Autónoma",
@@ -29826,7 +29826,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 939,
-          "NAME_1": "Castilla-La Mancha",
+          "NAME_1": "Castilla La Mancha",
           "VARNAME_1": "Castela-La Mancha|Castela-Mancha|Castella-la Manxa|Castilha-La Mancha",
           "HASC_1": "ES.CM",
           "TYPE_1": "Comunidad Autónoma",
@@ -29839,7 +29839,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 940,
-          "NAME_1": "Cataluña",
+          "NAME_1": "Catalunya",
           "VARNAME_1": "Catalogna|Catalogne|Catalonia|Catalunha|Catalunya|Katalonien",
           "HASC_1": "ES.CT",
           "TYPE_1": "Comunidad Autónoma",
@@ -29865,7 +29865,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 942,
-          "NAME_1": "Comunidad de Madrid",
+          "NAME_1": "Madrid",
           "VARNAME_1": "Madrid|Communauté de Madrid| Community of Madrid|Comunidad de Madrid |Comunidade de Madrid|Comunitat de Madrid",
           "HASC_1": "ES.MD",
           "TYPE_1": "Comunidad Autónoma",
@@ -29878,7 +29878,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 943,
-          "NAME_1": "Comunidad Foral de Navarra",
+          "NAME_1": "Navarra",
           "VARNAME_1": "Communauté forale de Navarre|Comunidade Foral de Navarra|Comunitat Foral|Navarra",
           "HASC_1": "ES.NA",
           "TYPE_1": "Comunidad Autónoma",
@@ -29891,7 +29891,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 944,
-          "NAME_1": "Comunidad Valenciana",
+          "NAME_1": "Valencia",
           "VARNAME_1": "Valencia|Communauté de Valence|Comunidade Valenciana|Comunidad Valenciana|Comunitat Valenciana",
           "HASC_1": "ES.VC",
           "TYPE_1": "Comunidad Autónoma",
@@ -29969,7 +29969,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 950,
-          "NAME_1": "País Vasco",
+          "NAME_1": "Pais Vasco",
           "VARNAME_1": "Basque Country|Baskenland|Basque Autonomous Community|Basque Provinces|CAV|Comunidad Autonoma Vasca",
           "HASC_1": "ES.PV",
           "TYPE_1": "Comunidad Autónoma",
@@ -29982,7 +29982,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 951,
-          "NAME_1": "Principado de Asturias",
+          "NAME_1": "Asturias",
           "VARNAME_1": "Astúrias|Asturie|Asturien|Asturies|Astúries|Asturias",
           "HASC_1": "ES.AS",
           "TYPE_1": "Comunidad Autónoma",
@@ -29995,7 +29995,7 @@ module.exports = {
           "ISO": "ESP",
           "NAME_0": "Spain",
           "ID_1": 952,
-          "NAME_1": "Región de Murcia",
+          "NAME_1": "Murcia",
           "VARNAME_1": "Murcia|Região de Múrcia|Regió de Múrcia|Région de Murcie|Region of Murcia",
           "HASC_1": "ES.MU",
           "TYPE_1": "Comunidad Autónoma",
@@ -30060,6 +30060,9 @@ var stats = [{
 }, {
   name: "Islas Baleares",
   value: 6
+}, {
+  name: "Navarra",
+  value: 10
 }];
 exports.stats = stats;
 var statsUpdated = [{
@@ -30110,6 +30113,9 @@ var statsUpdated = [{
 }, {
   name: "Islas Baleares",
   value: 1488
+}, {
+  name: "Navarra",
+  value: 3748
 }];
 exports.statsUpdated = statsUpdated;
 },{}],"../node_modules/d3-composite-projections/src/math.js":[function(require,module,exports) {
@@ -33329,26 +33335,19 @@ var spainjson = require("./spain.json");
 
 var d3Composite = require("d3-composite-projections");
 
+var color = d3.scaleThreshold().domain([0, 15, 50, 100, 1000, 5000, 10000, 40000]).range(["#e3f3e7", "#c6e7cf", "#a9dbb8", "#8ccfa1", "#6dc38b", "#49b675", "#49b675", "#3f9561"]);
 var svg = d3.select("body").append("svg").attr("width", 1024).attr("height", 800).attr("style", "background-color: #FBFAF0");
 var aProjection = d3Composite.geoConicConformalSpain() // Let's make the map bigger to fit in our resolution
 .scale(3300) // Let's center the map
 .translate([500, 400]);
 var geoPath = d3.geoPath().projection(aProjection);
 var geojson = topojson.feature(spainjson, spainjson.objects.ESP_adm1);
-svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "country") // data loaded from json file
-.attr("d", geoPath);
 document.getElementById("current").addEventListener("click", function handleCurrent() {
   createSvg(_stats.statsUpdated);
 });
 document.getElementById("initial").addEventListener("click", function handleInitial() {
   createSvg(_stats.stats);
 });
-/*
- const affectedRadiusScaleQuantile=d3
-.scaleLinear()
-.domain([0,15,50,100,1000,5000,10000,40000])
-.range([0,5,10,15,20,25,35,35,40])
- */
 
 var createSvg = function createSvg(data) {
   var maxAffected = data.reduce(function (max, item) {
@@ -33363,6 +33362,24 @@ var createSvg = function createSvg(data) {
     return entry ? affectedRadiusScale(entry.value) : 0;
   };
 
+  var assignRegionBackgroundColor = function assignRegionBackgroundColor(name) {
+    var item = data.find(function (item) {
+      return item.name === name;
+    });
+
+    if (item) {
+      console.log(item.value);
+    }
+
+    return item ? color(item.value) : color(0);
+  };
+
+  svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "country").attr("fill", function (d) {
+    return assignRegionBackgroundColor(d["properties"]["NAME_1"]);
+  }) // data loaded from json file
+  .attr("d", geoPath).merge(svg.selectAll("path")).transition().duration(500).attr("fill", function (d) {
+    return assignRegionBackgroundColor(d["properties"]["NAME_1"]);
+  });
   var circles = svg.selectAll("circle");
   circles.data(_communities.latLongCommunities).enter().append("circle").attr("class", "affected-marker").attr("r", function (d) {
     return calculateRadiusBasedOnAffectedCases(d.name);
@@ -33404,7 +33421,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61309" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63402" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
