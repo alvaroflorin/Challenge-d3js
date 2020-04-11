@@ -30062,7 +30062,7 @@ var stats = [{
   value: 6
 }, {
   name: "Navarra",
-  value: 10
+  value: 13
 }];
 exports.stats = stats;
 var statsUpdated = [{
