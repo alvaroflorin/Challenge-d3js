@@ -1,10 +1,6 @@
 # Rendering map
 
-Our boss now wants to display maps... nice let's start by displaying a map of Europe, we are going to implement the following
-features:
-
-- Proper display all the countries (right size, center...).
-- Highlight the country where the mouse is pointing to (mouse hover).
+The objective is using the mandatory task to change the colour of each community in function of the number of cases of covid
 
 ![Initial and current cases of covid19 in Spain](./content/advanced.gif)
 
