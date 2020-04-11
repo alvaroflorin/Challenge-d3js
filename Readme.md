@@ -63,4 +63,3 @@ a const that with the name of the community find the number of cases and return 
 +  };
 ```
 
-
