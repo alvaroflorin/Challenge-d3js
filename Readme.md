@@ -7,7 +7,7 @@ The objective is using the mandatory task to change the colour of each community
 
 # Steps
 
-- We will take as starting example The mandatory task
+- We will take as starting example The mandatory task that is in https://github.com/alvaroflorin/Mandatory-d3js
 
 _./src/index.ts_
 
