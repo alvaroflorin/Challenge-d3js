@@ -9,16 +9,16 @@ var color = d3
   .scaleThreshold<number, string>()
   .domain([0,15,50,100,1000,5000,10000,40000])
   .range([
-    "#e3f3e7",
-    "#c6e7cf",
-    "#a9dbb8",
-    "#8ccfa1",
-    "#6dc38b",
-    "#49b675",
-    "#49b675",
-    "#3f9561"
-  ]);
-
+    "#eeeec3;",
+    "#e8cd7e",
+    "#eda63f",
+    "#ef9b30",
+    "#f18e22",
+    "#f48114",
+    "#f67304",
+    "#fb5000",
+    "#ff0000"
+  ]); 
 const svg = d3
   .select("body")
   .append("svg")
@@ -50,22 +50,16 @@ document
 
 const createSvg=(data:ResultEntry[])=>{
   
-  const maxAffected = data.reduce(
-    (max, item) => (item.value > max ? item.value : max),
-    0
-  );
-
-  const affectedRadiusScale=d3
+  const affectedRadiusScaleQuantile=d3
   .scaleLinear()
-  .domain([0,maxAffected])
-  .range([5,45])
-
+  .domain([0,15,50,100,1000,5000,10000,40000])
+  .range([5,9,12,15,18,21,25,30,40])
 
 
   const calculateRadiusBasedOnAffectedCases = (comunidad: string) => {
     const entry = data.find(item => item.name === comunidad);
   
-    return entry ? affectedRadiusScale(entry.value) : 0;
+    return entry ? affectedRadiusScaleQuantile(entry.value) : 0;
   };
 
   const assignRegionBackgroundColor = (name: string) => {
