@@ -52,7 +52,7 @@ _./src/index.ts_
 a const that with the name of the community find the number of cases and return the colour var of that amount of cases was added
 
 ```
-+const assignRegionBackgroundColor = (name: string) => {
++ const assignRegionBackgroundColor = (name: string) => {
 +    const item = data.find(
 +      item => item.name === name
 +    ); 
