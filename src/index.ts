@@ -5,7 +5,7 @@ import { stats, statsUpdated, ResultEntry } from "./stats";
 const d3Composite = require("d3-composite-projections");
 import { latLongCommunities } from "./communities";
 
-var color = d3
+var colour = d3
   .scaleThreshold<number, string>()
   .domain([0,15,50,100,1000,5000,10000,40000])
   .range([
@@ -28,9 +28,7 @@ const svg = d3
 
 const aProjection = d3Composite
   .geoConicConformalSpain()
-  // Let's make the map bigger to fit in our resolution
   .scale(3300)
-  // Let's center the map
   .translate([500, 400]);
 
 const geoPath = d3.geoPath().projection(aProjection);
@@ -70,7 +68,7 @@ const createSvg=(data:ResultEntry[])=>{
     if (item) {
       console.log(item.value);
     }
-    return item ? color(item.value) : color(0);
+    return item ? colour(item.value) : colour(0);
   };
 
     svg
@@ -78,9 +76,8 @@ const createSvg=(data:ResultEntry[])=>{
     .data(geojson["features"])
     .enter()
     .append("path")
-    .attr("class", "country")
+    .attr("class", "community")
     .attr("fill",d=>assignRegionBackgroundColor(d["properties"]["NAME_1"]))
-    // data loaded from json file
     .attr("d", geoPath as any)
     .merge(svg.selectAll("path") as any)
     .transition()
@@ -95,17 +92,13 @@ const createSvg=(data:ResultEntry[])=>{
     .enter()
     .append("circle")
     .attr("class","affected-marker")
-    .attr("r", function(d) {
-        return calculateRadiusBasedOnAffectedCases(d.name);
-      })
+    .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
     .attr("cx",d=> aProjection([d.long,d.lat])[0])
     .attr("cy",d=> aProjection([d.long,d.lat])[1])
     .merge(circles as any)
     .transition()
     .duration(500)
-    .attr("r", function(d) {
-        return calculateRadiusBasedOnAffectedCases(d.name);
-    })
+    .attr("r", d=>calculateRadiusBasedOnAffectedCases(d.name))
     ;
 };
 createSvg(stats);

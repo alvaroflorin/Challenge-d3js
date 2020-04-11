@@ -33335,11 +33335,9 @@ var spainjson = require("./spain.json");
 
 var d3Composite = require("d3-composite-projections");
 
-var color = d3.scaleThreshold().domain([0, 15, 50, 100, 1000, 5000, 10000, 40000]).range(["#eeeec3;", "#e8cd7e", "#eda63f", "#ef9b30", "#f18e22", "#f48114", "#f67304", "#fb5000", "#ff0000"]);
+var colour = d3.scaleThreshold().domain([0, 15, 50, 100, 1000, 5000, 10000, 40000]).range(["#eeeec3;", "#e8cd7e", "#eda63f", "#ef9b30", "#f18e22", "#f48114", "#f67304", "#fb5000", "#ff0000"]);
 var svg = d3.select("body").append("svg").attr("width", 1024).attr("height", 800).attr("style", "background-color: #FBFAF0");
-var aProjection = d3Composite.geoConicConformalSpain() // Let's make the map bigger to fit in our resolution
-.scale(3300) // Let's center the map
-.translate([500, 400]);
+var aProjection = d3Composite.geoConicConformalSpain().scale(3300).translate([500, 400]);
 var geoPath = d3.geoPath().projection(aProjection);
 var geojson = topojson.feature(spainjson, spainjson.objects.ESP_adm1);
 document.getElementById("current").addEventListener("click", function handleCurrent() {
@@ -33368,13 +33366,12 @@ var createSvg = function createSvg(data) {
       console.log(item.value);
     }
 
-    return item ? color(item.value) : color(0);
+    return item ? colour(item.value) : colour(0);
   };
 
-  svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "country").attr("fill", function (d) {
+  svg.selectAll("path").data(geojson["features"]).enter().append("path").attr("class", "community").attr("fill", function (d) {
     return assignRegionBackgroundColor(d["properties"]["NAME_1"]);
-  }) // data loaded from json file
-  .attr("d", geoPath).merge(svg.selectAll("path")).transition().duration(500).attr("fill", function (d) {
+  }).attr("d", geoPath).merge(svg.selectAll("path")).transition().duration(500).attr("fill", function (d) {
     return assignRegionBackgroundColor(d["properties"]["NAME_1"]);
   });
   var circles = svg.selectAll("circle");
