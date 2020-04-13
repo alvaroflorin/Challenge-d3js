@@ -1,17 +1,17 @@
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
-const spainjson = require("./spain.json");
+const japanjson = require("./japan.json");
 import { stats, statsUpdated, ResultEntry } from "./stats";
 const d3Composite = require("d3-composite-projections");
-import { latLongCommunities } from "./communities";
+import { latLongCommunities } from "./prefectures";
 
 var colour = d3
   .scaleThreshold<number, string>()
-  .domain([0,15,50,100,1000,5000,10000,40000])
+  .domain([0,1,20,50,100,400,800,1900])
   .range([
-    "#eeeec3;",
+    "#eeeeee",
+    "#eeeec3",
     "#e8cd7e",
-    "#eda63f",
     "#ef9b30",
     "#f18e22",
     "#f48114",
@@ -26,14 +26,15 @@ const svg = d3
   .attr("height", 800)
   .attr("style", "background-color: #FBFAF0");
 
-const aProjection = d3Composite
-  .geoConicConformalSpain()
-  .scale(3300)
-  .translate([500, 400]);
+const aProjection = d3.geoMercator()
+  .precision(0.1)
+  .center([138, 35])
+  .rotate([0,0,20])
+  .scale(1800)
+  .translate([100 , 920 ]);
 
 const geoPath = d3.geoPath().projection(aProjection);
-const geojson = topojson.feature(spainjson, spainjson.objects.ESP_adm1);
-
+const geojson = topojson.feature(japanjson, japanjson.objects.japan);
 
 document
 .getElementById("current")
@@ -45,13 +46,12 @@ document
 .addEventListener("click", function handleInitial() {
   createSvg(stats);
 });
-
 const createSvg=(data:ResultEntry[])=>{
   
   const affectedRadiusScaleQuantile=d3
   .scaleLinear()
-  .domain([0,15,50,100,1000,5000,10000,40000])
-  .range([5,9,12,15,18,21,25,30,40])
+  .domain([0,1,20,50,100,400,800,1900])
+  .range([0,3,5,7,9,11,13,15,17])
 
 
   const calculateRadiusBasedOnAffectedCases = (comunidad: string) => {
@@ -76,13 +76,13 @@ const createSvg=(data:ResultEntry[])=>{
     .data(geojson["features"])
     .enter()
     .append("path")
-    .attr("class", "community")
-    .attr("fill",d=>assignRegionBackgroundColor(d["properties"]["NAME_1"]))
+    .attr("class", "prefecture")
+    .attr("fill",d=>assignRegionBackgroundColor(d["properties"]["region"]))
     .attr("d", geoPath as any)
     .merge(svg.selectAll("path") as any)
     .transition()
     .duration(500)
-    .attr("fill",d=>assignRegionBackgroundColor(d["properties"]["NAME_1"]))
+    .attr("fill",d=>assignRegionBackgroundColor(d["properties"]["region"]))
     ;
 
     const circles=svg
@@ -102,3 +102,5 @@ const createSvg=(data:ResultEntry[])=>{
     ;
 };
 createSvg(stats);
+
+
