@@ -4,6 +4,7 @@ The objective is using the mandatory task to change the colour of each community
 
 ![Initial and current cases of covid19 in Japan](./content/challenge.gif)
 
+those prefectures with 0 cases of covid19 does not have circle, this is the case of some prefectures on February 29 and they have circle on April 11. On April 11 date Iwate prefecture is the last prefecture with 0 cases of covid19
 
 # Steps
 
