@@ -12,7 +12,7 @@ those prefectures with 0 cases of covid19 does not have circle, this is the case
 
 _./src/japan.json_
 
-Spain.json was deleted and instead of it japan.json was used from https://cdn.rawgit.com/rveciana/5919944/raw/a3d0f29d851893e15dcf6194997453086c408fd3/japan.json, after that all prefectures were in the map but all of them used the region name all region names were changed to the prefecture name and the name is the same the it will be in prefectures.ts and stats.ts
+Spain.json was deleted and instead of it japan.json was used from https://cdn.rawgit.com/rveciana/5919944/raw/a3d0f29d851893e15dcf6194997453086c408fd3/japan.json, after that all prefectures were in the map but all of them used the region name. All region names were changed to the prefecture name and the name is the same to the name in prefectures.ts and stats.ts
 
 _./src/stats.ts_
 
